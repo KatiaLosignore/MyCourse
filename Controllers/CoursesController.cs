@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MyCourse.Models.ViewModels;
+using MyCourse.Models.Services.Application;
 
 namespace MyCourse.Controllers
 {
@@ -20,8 +22,10 @@ namespace MyCourse.Controllers
 
         public IActionResult Index()
         {
-            // return Content("Sono Index");
-            return View("Detail");
+            var courseService = new CourseService();  // il controller crea un oggetto del servizio applicativo che deve utilizzare
+            List<CourseViewModel> courses = courseService.GetServices();  // Recupero la lista dei corsi
+        
+            return View(courses);   // passo l'oggetto contenente la lista dei corsi alla view
         }
 
          public IActionResult Detail(string id)
