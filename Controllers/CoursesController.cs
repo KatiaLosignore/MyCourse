@@ -21,7 +21,8 @@ namespace MyCourse.Controllers
         // }
 
         public IActionResult Index()
-        {
+        {   
+            
             var courseService = new CourseService();  // il controller crea un oggetto del servizio applicativo che deve utilizzare
             List<CourseViewModel> courses = courseService.GetServices();  // Recupero la lista dei corsi
         
