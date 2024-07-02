@@ -24,15 +24,19 @@ namespace MyCourse.Controllers
         {   
             
             var courseService = new CourseService();  // il controller crea un oggetto del servizio applicativo che deve utilizzare
-            List<CourseViewModel> courses = courseService.GetServices();  // Recupero la lista dei corsi
+            List<CourseViewModel> courses = courseService.GetCourses();  // Recupero la lista dei corsi
         
             return View(courses);   // passo l'oggetto contenente la lista dei corsi alla view
         }
 
-         public IActionResult Detail(string id)
+        //azione che deve recuperare i dati del corso con id = id parametro
+        //popolare la view Detail.cshmtl con i dati del corso recuperato
+         public IActionResult Detail(int id)
         {
             // return Content($"Sono Detail con id {id}");
-            return View();
+            var courseService = new CourseService();
+            CourseDetailViewModel viewModel = courseService.GetCourse(id);
+            return View(viewModel);
         }
 
         // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
