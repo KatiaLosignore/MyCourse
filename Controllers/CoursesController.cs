@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using MyCourse.Models.ViewModels;
 using MyCourse.Models.Services.Application;
 
+
 namespace MyCourse.Controllers
 {
     // [Route("[controller]")]
@@ -22,7 +23,7 @@ namespace MyCourse.Controllers
 
         public IActionResult Index()
         {   
-            
+            ViewData["Title"] = "Catalogo dei Corsi";
             var courseService = new CourseService();  // il controller crea un oggetto del servizio applicativo che deve utilizzare
             List<CourseViewModel> courses = courseService.GetCourses();  // Recupero la lista dei corsi
         
@@ -36,6 +37,7 @@ namespace MyCourse.Controllers
             // return Content($"Sono Detail con id {id}");
             var courseService = new CourseService();
             CourseDetailViewModel viewModel = courseService.GetCourse(id);
+            ViewData["Title"] = viewModel.Title;
             return View(viewModel);
         }
 
