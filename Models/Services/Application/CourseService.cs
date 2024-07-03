@@ -9,7 +9,8 @@ using  MyCourse.Models.Enums;
 
 namespace MyCourse.Models.Services.Application
 {
-    public class CourseService
+    //questa classe rappresenta il servizio applicativvo concreto
+    public class CourseService : ICourseService
     {
         // Metodo che deve tornare la lista dei corsi
         // per adesso creiamo un algoritmo che crea dei corsi ranodm

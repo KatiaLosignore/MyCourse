@@ -14,6 +14,16 @@ namespace MyCourse.Controllers
     // [Route("[controller]")]
     public class CoursesController : Controller
     {
+        // l'attributo è di tipo interfaccia
+        private ICourseService courseService;
+
+        // Il Controller per poter funzionare ha bisogno di un componente che implementa l'interfaccia ICourseService
+        public CoursesController(ICourseService courseService)
+        {
+            this.courseService = courseService;
+        }
+
+
         // private readonly ILogger<CoursesController> _logger;
 
         // public CoursesController(ILogger<CoursesController> logger)
@@ -24,7 +34,7 @@ namespace MyCourse.Controllers
         public IActionResult Index()
         {   
             ViewData["Title"] = "Catalogo dei Corsi";
-            var courseService = new CourseService();  // il controller crea un oggetto del servizio applicativo che deve utilizzare
+            // var courseService = new CourseService();  // il controller crea un oggetto del servizio applicativo che deve utilizzare
             List<CourseViewModel> courses = courseService.GetCourses();  // Recupero la lista dei corsi
         
             return View(courses);   // passo l'oggetto contenente la lista dei corsi alla view
@@ -35,7 +45,8 @@ namespace MyCourse.Controllers
          public IActionResult Detail(int id)
         {
             // return Content($"Sono Detail con id {id}");
-            var courseService = new CourseService();
+            
+            // var courseService = new CourseService();
             CourseDetailViewModel viewModel = courseService.GetCourse(id);
             ViewData["Title"] = viewModel.Title;
             return View(viewModel);
