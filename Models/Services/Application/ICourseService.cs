@@ -13,6 +13,6 @@ namespace MyCourse.Models.Services.Application
     {
         List<CourseViewModel> GetCourses();
 
-        CourseDetailViewModel GetCourse(int Id);
+        CourseDetailViewModel GetCourse(int id);
     }
 }

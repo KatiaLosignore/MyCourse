@@ -15,7 +15,7 @@ namespace MyCourse.Controllers
     public class CoursesController : Controller
     {
         // l'attributo è di tipo interfaccia
-        private ICourseService courseService;
+        private readonly ICourseService courseService;
 
         // Il Controller per poter funzionare ha bisogno di un componente che implementa l'interfaccia ICourseService
         public CoursesController(ICourseService courseService)
